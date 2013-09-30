@@ -2,7 +2,9 @@
 header('Content-Type: text/html; charset=UTF-8'); 
 
 
-echo "Calculate you drive time using waze<br>";
+echo "Calculate your drive time using waze<br>";
+echo "Enter your start and end locations, use the format : Street House number City<br>";
+echo "For example : אבן גבירול 7 תל אביב<br><br>";
 ?>
 
 
