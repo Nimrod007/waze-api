@@ -1,29 +1,19 @@
 <?php
+session_start();
 header('Content-Type: text/html; charset=UTF-8'); 
 
 //get the route start and end from the POST
-$start = $_POST['start'];
-$end = $_POST['end'];
+$start = $_POST['startPosition'];
+$end = $_POST['endPosition'];
 
-//encode it (to send in url)
-$startEncoded = urlencode($start);
-$endEncoded = urlencode($end);
+//get the cord's from user selected start & end adress
+$startResponseJson = $_SESSION['start'];
+$startLat = $startResponseJson[$start]['location']['lat'];
+$startLon = $startResponseJson[$start]['location']['lon'];
 
-//prepare url get street name information to cord's
-$wazeGetStartCordUrl = "http://www.waze.co.il/WAS/mozi?q=$startEncoded";
-$wazeGetEndCordUrl = "http://www.waze.co.il/WAS/mozi?q=$endEncoded";
-
-//send waze the street names and get back the cordinets
-$startResposeText = file_get_contents($wazeGetStartCordUrl);
-$startResponseJson = json_decode($startResposeText,true);
-$startLat = $startResponseJson[0]['location']['lat'];
-$startLon = $startResponseJson[0]['location']['lon'];
-
-$endResposeText = file_get_contents($wazeGetEndCordUrl);
-$endResponseJson = json_decode($endResposeText,true);
-$endLat = $endResponseJson[0]['location']['lat'];
-$endLon = $endResponseJson[0]['location']['lon'];
-
+$endResponseJson = $_SESSION['end'];
+$endLat = $endResponseJson[$end]['location']['lat'];
+$endLon = $endResponseJson[$end]['location']['lon'];
 
 //prepare URL for route time query
 $wazeRouteurl = "http://www.waze.co.il/RoutingManager/routingRequest?from=x%3A$startLon+y%3A$startLat+bd%3Atrue+s%3A51335+st_id%3A60799&to=x%3A$endLon+y%3A$endLat+bd%3Atrue+s%3A30045+st_id%3A4480&returnJSON=true&returnGeometries=true&returnInstructions=true&timeout=60000&nPaths=2";

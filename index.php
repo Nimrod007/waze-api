@@ -1,4 +1,5 @@
 <?php
+session_start();
 header('Content-Type: text/html; charset=UTF-8'); 
 
 
@@ -8,8 +9,8 @@ echo "For example : אבן גבירול 7 תל אביב<br><br>";
 ?>
 
 
-<form name="input" action="route.php" method="post">
+<form name="input" action="pickStreet.php" method="post">
 FROM: <input type="text" name="start"><br>
 TO: <input type="text" name="end"><br>
-<input type="submit" value="Calculate">
+<input type="submit" value="Next">
 </form> 
