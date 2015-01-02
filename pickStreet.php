@@ -12,8 +12,8 @@ $startEncoded = urlencode($start);
 $endEncoded = urlencode($end);
 
 //prepare url get street name information to cord's
-$wazeGetStartCordUrl = "http://www.waze.co.il/WAS/mozi?q=$startEncoded";
-$wazeGetEndCordUrl = "http://www.waze.co.il/WAS/mozi?q=$endEncoded";
+$wazeGetStartCordUrl = "https://www.waze.com/il-SearchServer/mozi?q=$startEncoded&lang=eng&origin=livemap&lon=34.86988663673401%20&lat=32.06473296383481";
+$wazeGetEndCordUrl = "https://www.waze.com/il-SearchServer/mozi?q=$endEncoded&lang=eng&origin=livemap&lon=34.86988663673401%20&lat=32.06473296383481";
 
 //send waze the street names and get back the cordinets (might be more than 1 result for start and end)
 $startResposeText = file_get_contents($wazeGetStartCordUrl);
