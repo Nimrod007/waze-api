@@ -13,9 +13,13 @@ this is done by sending the waze web site a query for the route details and get 
 
 ====================================
 
-Try it out at :
+Try it out at:
 
 http://www.nimrodstech.com/waze/
 
 ====================================
 
+Blog about it:
+
+http://www.nimrodstech.com
+====================================
