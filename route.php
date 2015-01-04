@@ -16,8 +16,8 @@ $endLat = $endResponseJson[$end]['location']['lat'];
 $endLon = $endResponseJson[$end]['location']['lon'];
 
 //prepare URL for route time query
-$wazeRouteurl = "https://www.waze.com/RoutingManager/routingRequest?from=x%3A$startLon+y%3A$startLat+bd%3Atrue+s%3A51335+st_id%3A60799&to=x%3A$endLon+y%3A$endLat+bd%3Atrue+s%3A30045+st_id%3A4480&returnJSON=true&returnGeometries=true&returnInstructions=true&timeout=60000&nPaths=2";
-
+$wazeRouteurl = "https://www.waze.com/RoutingManager/routingRequest?from=x%3A$startLon+y%3A$startLat&to=x%3A$endLon+y%3A$endLat&at=0&returnJSON=true&returnGeometries=true&returnInstructions=true&timeout=60000&nPaths=3&options=AVOID_TRAILS%3At";
+//https://www.waze.com/RoutingManager/routingRequest?from=x%3A-73.9922319+y%3A40.7379049&to=x%3A-73.9451895+y%3A40.8134374&at=0&returnJSON=true&returnGeometries=true&returnInstructions=true&timeout=60000&nPaths=3&options=AVOID_TRAILS%3At
 //send GET request to WAZE web site 
 $routeResponseText = file_get_contents($wazeRouteurl);
 
