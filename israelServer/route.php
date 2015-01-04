@@ -49,9 +49,12 @@ foreach ($route2 as $street){
 $route1TotalTimeMin = round($route1TotalTimeSec/60);
 $route2TotalTimeMin = round($route2TotalTimeSec/60);
 
-echo "Route start : $start<br>";
+$startPoint = $startResponseJson[$start]['name'];
+$endPoint = $endResponseJson[$end]['name'];
+
+echo "Route Start: $startPoint<br>";
 echo "x-$startLon, y-$startLat<br>";
-echo "Route end : $end<br>";
+echo "Route End: $endPoint<br>";
 echo "x-$endLon, y-$endLat<br>";
 echo "Route - $route1Name , Total time (minutes) : $route1TotalTimeMin<br>";
 echo "Route - $route2Name , Total time (minutes) : $route2TotalTimeMin<br>";
