@@ -52,8 +52,8 @@ $route2TotalTimeMin = round($route2TotalTimeSec/60);
 $startPoint = $startResponseJson[$start]['name'];
 $endPoint = $endResponseJson[$end]['name'];
 
-echo "Route Start:    $startPoint<br>";
-echo "Route End:    $endPoint<br><br>";
-echo "Route - $route1Name , Total time (minutes) : $route1TotalTimeMin<br><br>";
-echo "Route - $route2Name , Total time (minutes) : $route2TotalTimeMin<br>";
+echo "Route Start:   $startPoint<br><br>";
+echo "Route End:     $endPoint<br><br>";
+echo "Route #1:      $route1Name, Duration (minutes): $route1TotalTimeMin<br><br>";
+echo "Route #2:      $route2Name, Duration (minutes): $route2TotalTimeMin<br>";
 ?>
