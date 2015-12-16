@@ -14,7 +14,8 @@ showing route duration, distance, tolls, diractions and notifications.
 ```bash
 curl -v "http://localhost:9090/waze/routesWithDirections?end=156+5th+Avenue%2C+New+York%2C+NY+10010&start=6+East+57th+Street%2C+New+York%2C+NY+10022" -H "Accept: application/json"
 ```
- 
+
+#### full docs for all requests - [link](http://htmlpreview.github.io/?https://github.com/Nimrod007/waze-api/blob/master/docs.html)
  
 ##### run the server with custom port:
  ```bash
