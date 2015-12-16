@@ -1,0 +1,20 @@
+modelFile: /waze/hi.html
+
+logging:
+  level: INFO
+  appenders:
+    - type: file
+      currentLogFilename: /tmp/server.log
+      threshold: ALL
+      archive: true
+      archivedLogFilenamePattern: /tmp/server-%d.log
+      archivedFileCount: 5
+      timeZone: UTC
+
+server:
+  applicationConnectors:
+    - type: http
+      port: 9090
+  adminConnectors:
+    - type: http
+      port: 9091
