@@ -15,7 +15,7 @@ curl -v "http://localhost:9090/waze/routesWithDirections?end=156+5th+Avenue%2C+N
 
 ##### documentation (full list of supported requests) - [link](http://htmlpreview.github.io/?https://github.com/Nimrod007/waze-api/blob/master/docs.html)
 
-##### list of all end-points with curl examples:
+##### list of all end-points with curl examples - [link](https://github.com/Nimrod007/waze-api/blob/master/scripts/testWazeAppServer.sh)
 
 ##### advance usage:
 ##### run the server with custom port:
