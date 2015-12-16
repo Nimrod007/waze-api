@@ -21,4 +21,5 @@ public class WazeHealthCheck extends HealthCheck {
         }
         return Result.healthy();
     }
+
 }
