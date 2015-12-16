@@ -22,7 +22,7 @@ curl -v "http://localhost:9090/waze/routesWithDirections?end=156+5th+Avenue%2C+N
  ```bash
  java -Ddw.server.applicationConnectors[0].port=9090 -Ddw.server.adminConnectors[0].port=9091 -jar waze-server.jar server
  ```
-##### run the server with custom config (see [conf.yml](https://github.com/Nimrod007/waze-api/blob/master/src/main/resources/conf.yml]) for example):
+##### run the server with custom config (see [conf.yml](http://github.com/Nimrod007/waze-api/blob/master/src/main/resources/conf.yml]) for example):
  ```bash
  java -jar waze-server.jar.jar server conf.yml
  ```
