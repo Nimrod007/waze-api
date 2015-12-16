@@ -1,14 +1,14 @@
 ##waze api - wrapping waze live map [![Build Status](https://travis-ci.org/Nimrod007/waze-api.svg?branch=master)](https://travis-ci.org/Nimrod007/waze-api)
 
-#### 2 steps and your up & running!
+#### 3 steps and your up & running!
 
-##### download [waze-server](https://github.com/Nimrod007/waze-api/releases/download/1.0/waze-server.jar)
-##### run the server (port 8080) :
+##### 1) download [waze-server](https://github.com/Nimrod007/waze-api/releases/download/1.0/waze-server.jar)
+##### 2) run the server (port 8080) :
  ```bash
  java -jar waze-server.jar server
  ```
  
-##### send a request:
+##### 3) send a request:
 ```bash
 curl -v "http://localhost:9090/waze/routesWithDirections?end=156+5th+Avenue%2C+New+York%2C+NY+10010&start=6+East+57th+Street%2C+New+York%2C+NY+10022" -H "Accept: application/json"
 ```
