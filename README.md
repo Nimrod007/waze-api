@@ -1,4 +1,4 @@
-###waze api 
+###waze api [![Build Status](https://travis-ci.org/Nimrod007/waze-api.svg?branch=master)](https://travis-ci.org/Nimrod007/waze-api)
 
 
 * php script example of how to to calcualte route duration using waze web site (www.waze.com)
