@@ -18,6 +18,8 @@ curl -v "http://localhost:8080/waze/routesWithDirections?end=156+5th+Avenue%2C+N
 ##### list of all end-points with curl examples - [link](https://github.com/Nimrod007/waze-api/blob/master/scripts/testWazeAppServer.sh)
 
 #### advance usage:
+
+#### using the the waze service (no server) - [link](https://github.com/Nimrod007/waze-api/blob/master/src/test/java/com/waze/WazeRouteServiceTest.java)
 ##### run the server with custom port:
  ```bash
  java -Ddw.server.applicationConnectors[0].port=9090 -Ddw.server.adminConnectors[0].port=9091 -jar waze-server.jar server
