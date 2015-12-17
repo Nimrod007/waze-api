@@ -25,10 +25,7 @@ public class WazeApp extends Application<WazeConfig> {
     }
 
     @Override
-    public void initialize(Bootstrap<WazeConfig> bootstrap) {
-        bootstrap.setConfigurationSourceProvider(new ConfigSource());
-        bootstrap.addBundle(new MultiPartBundle());
-    }
+    public void initialize(Bootstrap<WazeConfig> bootstrap){}
 
     @Override
     public void run(WazeConfig conf,

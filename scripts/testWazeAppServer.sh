@@ -4,6 +4,8 @@ APP1="localhost:9090"
 
 clear
 
+curl -v "http://localhost:9090/waze/routesWithDirections?end=156+5th+Avenue%2C+New+York%2C+NY+10010&start=6+East+57th+Street%2C+New+York%2C+NY+10022" -H "Accept: application/json"
+
 echo "app1: $APP1  - Routes Directions"
 response=$(curl --write-out %{http_code} --output /dev/null --silent --get --include "http://$APP1/waze/routesWithDirections?end=156+5th+Avenue%2C+New+York%2C+NY+10010&start=6+East+57th+Street%2C+New+York%2C+NY+10022" -H "Accept: application/json")
 if [ $response != "200" ]; then
