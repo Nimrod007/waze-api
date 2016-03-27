@@ -2,6 +2,14 @@ package com.waze.domain;
 
 public class WazeAlert {
 
+    private String country;
+    private int numOfThumbsUp;
+    private String type;
+    private String subType;
+    private String placeNearBy;
+    private String latitude; // Y
+    private String longitude; // X
+
     public WazeAlert(String country, int numOfThumbsUp, String type, String subType, String placeNearBy, String latitude, String longitude) {
         this.country = country;
         this.numOfThumbsUp = numOfThumbsUp;
@@ -14,14 +22,6 @@ public class WazeAlert {
 
     public WazeAlert() {
     }
-
-    private String country;
-    private int numOfThumbsUp;
-    private String type;
-    private String subType;
-    private String placeNearBy;
-    private String latitude; // Y
-    private String longitude; // X
 
     public void setCountry(String country) {
         this.country = country;
