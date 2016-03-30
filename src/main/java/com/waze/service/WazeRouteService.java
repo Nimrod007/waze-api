@@ -18,12 +18,9 @@ public class WazeRouteService {
 
     boolean singleAddress = true;
     boolean multipleAddress = false;
-
+    ObjectMapper mapper = new ObjectMapper();
 
     public WazeRouteService() {}
-
-
-    ObjectMapper mapper = new ObjectMapper();
 
     public WazeStreetPickerResult getAddressOptionsFromFreeText(String addressText){
         JsonNode results = getAddress(addressText, multipleAddress);
@@ -250,7 +247,7 @@ public class WazeRouteService {
         }
     }
 
-    private String createWazeRouteURL(String wazeServer, String startLat, String startLon, String endLat, String endLon){
+    private static String createWazeRouteURL(String wazeServer, String startLat, String startLon, String endLat, String endLon){
         return "https://www.waze.com/" + wazeServer + "/routingRequest?from=x%3A"
                 + startLon + "+y%3A" + startLat + "&to=x%3A" + endLon +
                 "+y%3A" + endLat + "&at=0&returnJSON=true&returnGeometries=true&returnInstructions=true&timeout=60000&nPaths=3&options=AVOID_TRAILS%3At";

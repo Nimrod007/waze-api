@@ -4,6 +4,9 @@ import java.util.ArrayList;
 
 public class WazeTrafficNotificationsResponse {
 
+    private ArrayList<WazeAlert> alerts;
+    private ArrayList<WazeJam> jams;
+
     public ArrayList<WazeAlert> getAlerts() {
         return alerts;
     }
@@ -19,10 +22,6 @@ public class WazeTrafficNotificationsResponse {
     public void setJams(ArrayList<WazeJam> jams) {
         this.jams = jams;
     }
-
-    private ArrayList<WazeAlert> alerts;
-    private ArrayList<WazeJam> jams;
-
 
 }
 

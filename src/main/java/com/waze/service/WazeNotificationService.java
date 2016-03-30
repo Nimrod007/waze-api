@@ -15,14 +15,14 @@ import java.util.ArrayList;
  */
 public class WazeNotificationService {
 
-    public WazeNotificationService() {}
-
     ObjectMapper mapper = new ObjectMapper();
 
-    private String genNotificationUrl(String server, String left, String right, String top, String bottom){
+    private static String genNotificationUrl(String server, String left, String right, String top, String bottom){
         return "https://www.waze.com/" + server + "/web/TGeoRSS?left="
                 + left + "&right=" + right + "&bottom=" + bottom + "&top=" + top;
     }
+
+    public WazeNotificationService() {}
 
     //Longitude X-left  Longitude X-right latitude Y-top, latitude Y-bottom
     public WazeTrafficNotificationsResponse getNotifications(String left, String right, String top, String bottom){
