@@ -16,6 +16,7 @@ import java.util.ArrayList;
 public class WazeNotificationService {
 
     ObjectMapper mapper = new ObjectMapper();
+    AsyncHttpClient asyncHttpClient = new AsyncHttpClient();
 
     private static String genNotificationUrl(String server, String left, String right, String top, String bottom){
         return "https://www.waze.com/" + server + "/web/TGeoRSS?left="
@@ -33,8 +34,6 @@ public class WazeNotificationService {
         ArrayList<WazeAlert> alerts = new ArrayList<>();
         ArrayList<WazeJam> jams = new ArrayList<>();
 
-
-        AsyncHttpClient asyncHttpClient = new AsyncHttpClient();
 
         try{
             for (String server: serverList){
@@ -83,8 +82,6 @@ public class WazeNotificationService {
             }
         }catch (Exception ex) {
             throw new RuntimeException("failed to get notifications \nurl: "+ url + "\nerror: "+ ex.getMessage());
-        }finally {
-            asyncHttpClient.close();
         }
 
         wazeTrafficNotificationsResponse.setAlerts(alerts);

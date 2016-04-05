@@ -16,6 +16,9 @@ import java.util.ArrayList;
  */
 public class WazeRouteService {
 
+    AsyncHttpClient asyncHttpClient = new AsyncHttpClient();
+
+
     boolean singleAddress = true;
     boolean multipleAddress = false;
     ObjectMapper mapper = new ObjectMapper();
@@ -200,10 +203,9 @@ public class WazeRouteService {
 
     public ArrayList<JsonNode> sendRouteRequest(String routeUrl){
         ArrayList<JsonNode> routes = new ArrayList<>();
-        AsyncHttpClient asyncHttpClient = new AsyncHttpClient();
         try{
             Response response = asyncHttpClient
-                    .preparePost(routeUrl)
+                    .prepareGet(routeUrl)
                     .execute()
                     .get();
 
@@ -220,20 +222,17 @@ public class WazeRouteService {
             }
         }catch (Exception ex) {
             throw new RuntimeException("failed to query waze route \nurl: " + routeUrl + " \nerror: "+ ex.getMessage());
-        }finally {
-            asyncHttpClient.close();
         }
 
         return routes;
     }
 
     public JsonNode getAddress(String address, boolean single){
-        AsyncHttpClient asyncHttpClient = new AsyncHttpClient();
         String addressURL = "";
         try {
             addressURL = "https://www.waze.com/SearchServer/mozi?q=" + URLEncoder.encode(address, "UTF-8") + "&lang=eng&lon=-73.96888732910156%20&lat=40.799981900731964&origin=livemap";
             Response response = asyncHttpClient
-                    .preparePost(addressURL)
+                    .prepareGet(addressURL)
                     .execute().get();
             if (single)
                 return mapper.readTree(response.getResponseBody()).get(0);
@@ -242,8 +241,6 @@ public class WazeRouteService {
 
         }catch (Exception ex) {
             throw new WazeException("failed to query waze address \nurl: " + addressURL + " \nerror: "+ ex.getMessage());
-        }finally {
-            asyncHttpClient.close();
         }
     }
 
