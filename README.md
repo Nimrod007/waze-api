@@ -2,7 +2,7 @@
 
 #### 3 steps and your up & running!
 
-##### 1) download [waze-server](https://github.com/Nimrod007/waze-api/releases/download/1.0/waze-server.jar)
+##### 1) download [waze-server](https://github.com/Nimrod007/waze-api/releases/download/1.1/waze-server.jar)
 ##### 2) run the server (port 8080) :
  ```bash
  java -jar waze-server.jar server
