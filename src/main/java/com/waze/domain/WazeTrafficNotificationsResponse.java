@@ -1,25 +1,25 @@
 package com.waze.domain;
 
-import java.util.ArrayList;
+import java.util.List;
 
 public class WazeTrafficNotificationsResponse {
 
-    private ArrayList<WazeAlert> alerts;
-    private ArrayList<WazeJam> jams;
+    private List<WazeAlert> alerts;
+    private List<WazeJam> jams;
 
-    public ArrayList<WazeAlert> getAlerts() {
+    public List<WazeAlert> getAlerts() {
         return alerts;
     }
 
-    public void setAlerts(ArrayList<WazeAlert> alerts) {
+    public void setAlerts(List<WazeAlert> alerts) {
         this.alerts = alerts;
     }
 
-    public ArrayList<WazeJam> getJams() {
+    public List<WazeJam> getJams() {
         return jams;
     }
 
-    public void setJams(ArrayList<WazeJam> jams) {
+    public void setJams(List<WazeJam> jams) {
         this.jams = jams;
     }
 

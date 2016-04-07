@@ -9,6 +9,7 @@ import com.waze.domain.WazeTrafficNotificationsResponse;
 import com.waze.utils.Utils;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Nimrod_Lahav on 5/21/15.
@@ -31,8 +32,8 @@ public class WazeNotificationService {
         String[] serverList = {"rtserver", "row-rtserver", "il-rtserver"};
         String url = "";
         WazeTrafficNotificationsResponse wazeTrafficNotificationsResponse = new WazeTrafficNotificationsResponse();
-        ArrayList<WazeAlert> alerts = new ArrayList<>();
-        ArrayList<WazeJam> jams = new ArrayList<>();
+        List<WazeAlert> alerts = new ArrayList<>();
+        List<WazeJam> jams = new ArrayList<>();
 
 
         try{
