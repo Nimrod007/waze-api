@@ -21,9 +21,9 @@ import javax.ws.rs.core.MediaType;
 @Produces(MediaType.APPLICATION_JSON)
 public class WazeEndPoint {
 
-    private WazeRouteService wazeRouteService;
-    private WazeNotificationService wazeNotificationService;
-    private Logger log = LoggerFactory.getLogger("waze");
+    private final WazeRouteService wazeRouteService;
+    private final WazeNotificationService wazeNotificationService;
+    private final Logger log = LoggerFactory.getLogger("waze");
 
     public WazeEndPoint(WazeRouteService wazeRouteService, WazeNotificationService wazeNotificationService) {
         this.wazeNotificationService = wazeNotificationService;
