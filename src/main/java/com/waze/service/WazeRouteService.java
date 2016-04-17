@@ -15,6 +15,12 @@ import java.util.ArrayList;
  * Created by Nimrod_Lahav on 5/21/15.
  */
 public class WazeRouteService {
+    private static final String LOCATION = "location";
+    private static final String RESPONSE = "response";
+    private static final String IS_TOLL = "isToll";
+    private static final String CROSS_TIME = "crossTime";
+    private static final String LENGTH = "length";
+    private static final String COORDS = "coords";
 
     AsyncHttpClient asyncHttpClient = new AsyncHttpClient();
 
@@ -67,11 +73,11 @@ public class WazeRouteService {
         JsonNode startNode = getAddress(start, singleAddress);
         JsonNode endNode = getAddress(end, singleAddress);
 
-        String startLat = Utils.getX2StringOrNull("location", "lat", startNode);
-        String startLon = Utils.getX2StringOrNull("location", "lon", startNode);
+        String startLat = Utils.getX2StringOrNull(LOCATION, "lat", startNode);
+        String startLon = Utils.getX2StringOrNull(LOCATION, "lon", startNode);
 
-        String endLat = Utils.getX2StringOrNull("location", "lat", endNode);
-        String endLon = Utils.getX2StringOrNull("location", "lon", endNode);
+        String endLat = Utils.getX2StringOrNull(LOCATION, "lat", endNode);
+        String endLon = Utils.getX2StringOrNull(LOCATION, "lon", endNode);
 
         String startName = Utils.getStringOrNull("name", startNode);
         String endName = Utils.getStringOrNull("name", endNode);
@@ -97,34 +103,34 @@ public class WazeRouteService {
             int routeDuration = 0;
             int routeLengthMeter = 0;
 
-            String routeName = Utils.getX2StringOrNull("response", "routeName", routeNode);
+            String routeName = Utils.getX2StringOrNull(RESPONSE, "routeName", routeNode);
             ArrayList<String> streetList = new ArrayList<>();
 
-            JsonNode streets = routeNode.get("response").get("streetNames");
+            JsonNode streets = routeNode.get(RESPONSE).get("streetNames");
 
             for (JsonNode street : streets) {
                 streetList.add(street.asText());
             }
 
             ArrayList<WazeRoutePart> wazeRouteParts = new ArrayList<>();
-            JsonNode routeParts = routeNode.get("response").get("results");
+            JsonNode routeParts = routeNode.get(RESPONSE).get("results");
             for (JsonNode part : routeParts) {
 
-                if(part.get("isToll").asBoolean()){
+                if(part.get(IS_TOLL).asBoolean()){
                     isToll = true;
                 }
-                routeDuration += Utils.getIntOrNull("crossTime", part);
-                routeLengthMeter += Utils.getIntOrNull("length", part);
+                routeDuration += Utils.getIntOrNull(CROSS_TIME, part);
+                routeLengthMeter += Utils.getIntOrNull(LENGTH, part);
 
                 String latitude = Utils.getX2StringOrNull("path", "y", part); //Y
                 String longitude = Utils.getX2StringOrNull("path", "x", part); //X
                 String instruction = Utils.getX2StringOrNull("instruction", "opcode", part);
                 int nameIndex = Utils.getIntOrNull("street", part);
                 String streetName = streetList.get(nameIndex);
-                Boolean tollRoad = part.get("isToll").asBoolean();
-                int timeToCross = Utils.getIntOrNull("crossTime", part);
+                Boolean tollRoad = part.get(IS_TOLL).asBoolean();
+                int timeToCross = Utils.getIntOrNull(CROSS_TIME, part);
                 int timeFromStart = Utils.getIntOrNull("distance", part);
-                int lengthOfPart = Utils.getIntOrNull("length", part);
+                int lengthOfPart = Utils.getIntOrNull(LENGTH, part);
 
                 WazeRoutePart wazeRoutePart = new WazeRoutePart(latitude, longitude, instruction, streetName, tollRoad, timeToCross, timeFromStart, lengthOfPart);
                 wazeRouteParts.add(wazeRoutePart);
@@ -155,21 +161,21 @@ public class WazeRouteService {
         for (JsonNode routeNode : routeResponse) {
             boolean isToll = false;
             int routeLengthMeter = 0;
-            String routeName = routeNode.get("response").get("routeName").asText();
-            JsonNode routeParts = routeNode.get("response").get("results");
+            String routeName = routeNode.get(RESPONSE).get("routeName").asText();
+            JsonNode routeParts = routeNode.get(RESPONSE).get("results");
 
-            startLongitude = routeNode.get("coords").get(0).get("x").asText();
-            startLatitude = routeNode.get("coords").get(0).get("y").asText();
+            startLongitude = routeNode.get(COORDS).get(0).get("x").asText();
+            startLatitude = routeNode.get(COORDS).get(0).get("y").asText();
 
-            endLongitude = routeNode.get("coords").get(routeNode.size()-1).get("x").asText();
-            endLatitude = routeNode.get("coords").get(routeNode.size()-1).get("y").asText();
+            endLongitude = routeNode.get(COORDS).get(routeNode.size()-1).get("x").asText();
+            endLatitude = routeNode.get(COORDS).get(routeNode.size()-1).get("y").asText();
 
             int routeDuration = 0;
 
             for (JsonNode part : routeParts) {
-                routeDuration += part.get("crossTime").asInt();
-                routeLengthMeter += part.get("length").asInt();
-                if(part.get("isToll").asBoolean()){
+                routeDuration += part.get(CROSS_TIME).asInt();
+                routeLengthMeter += part.get(LENGTH).asInt();
+                if(part.get(IS_TOLL).asBoolean()){
                     isToll = true;
                 }
             }
@@ -190,11 +196,11 @@ public class WazeRouteService {
         JsonNode startNode = getAddress(start, singleAddress);
         JsonNode endNode = getAddress(end, singleAddress);
 
-        String startLat = startNode.get("location").get("lat").asText();
-        String startLon = startNode.get("location").get("lon").asText();
+        String startLat = startNode.get(LOCATION).get("lat").asText();
+        String startLon = startNode.get(LOCATION).get("lon").asText();
 
-        String endLat = endNode.get("location").get("lat").asText();
-        String endLon = endNode.get("location").get("lon").asText();
+        String endLat = endNode.get(LOCATION).get("lat").asText();
+        String endLon = endNode.get(LOCATION).get("lon").asText();
 
         return getRoutes(startLat, startLon, endLat, endLon, startNode.get("name").asText(), endNode.get("name").asText());
     }

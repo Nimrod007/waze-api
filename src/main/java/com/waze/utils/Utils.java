@@ -2,7 +2,11 @@ package com.waze.utils;
 
 import com.fasterxml.jackson.databind.JsonNode;
 
-public class Utils {
+public final class Utils {
+
+    private Utils() throws InstantiationException {
+        throw new InstantiationException("This class is not for instantiation");
+    }
 
     public static String getStringOrNull(String key, JsonNode node){
         return node.has(key) ? node.get(key).asText() : null ;
