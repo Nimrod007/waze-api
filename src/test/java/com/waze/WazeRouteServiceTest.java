@@ -12,7 +12,7 @@ import com.waze.service.WazeRouteService;
 import org.junit.Ignore;
 import org.junit.Test;
 
-import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Nimrod_Lahav on 5/22/15.
@@ -60,7 +60,7 @@ public class WazeRouteServiceTest {
     @Test
     @Ignore
     public void testWazeRouteApi(){
-        ArrayList<JsonNode> routeResult = wazeRouteService.sendRouteRequest("https://www.waze.com/RoutingManager/routingRequest?from=x%3A-73.96537017822266+y%3A40.77473068237305&to=x%3A-73.99018859863281+y%3A40.751678466796875&at=0&returnJSON=true&returnGeometries=true&returnInstructions=true&timeout=60000&nPaths=3&options=AVOID_TRAILS%3At");
+        List<JsonNode> routeResult = wazeRouteService.sendRouteRequest("https://www.waze.com/RoutingManager/routingRequest?from=x%3A-73.96537017822266+y%3A40.77473068237305&to=x%3A-73.99018859863281+y%3A40.751678466796875&at=0&returnJSON=true&returnGeometries=true&returnInstructions=true&timeout=60000&nPaths=3&options=AVOID_TRAILS%3At");
         String routeName = routeResult.get(0).get("response").get("routeName").asText();
         assert(!routeName.equals(""));
     }

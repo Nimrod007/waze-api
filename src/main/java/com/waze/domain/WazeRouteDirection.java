@@ -1,6 +1,6 @@
 package com.waze.domain;
 
-import java.util.ArrayList;
+import java.util.List;
 
 public class WazeRouteDirection {
 
@@ -8,12 +8,12 @@ public class WazeRouteDirection {
     private int routeDurationInMinutes;
     private double routeLengthKM;
     private boolean toll;
-    private ArrayList<WazeRoutePart> routeParts;
-    private ArrayList<String> routeStreets;
+    private List<WazeRoutePart> routeParts;
+    private List<String> routeStreets;
 
     public WazeRouteDirection(){}
 
-    public WazeRouteDirection(String routeName, int routeDurationInMinutes, double routeLengthKM, boolean toll, ArrayList<WazeRoutePart> routeParts, ArrayList<String> routeStreets) {
+    public WazeRouteDirection(String routeName, int routeDurationInMinutes, double routeLengthKM, boolean toll, List<WazeRoutePart> routeParts, List<String> routeStreets) {
         this.routeName = routeName;
         this.routeDurationInMinutes = routeDurationInMinutes;
         this.routeLengthKM = routeLengthKM;
@@ -26,11 +26,11 @@ public class WazeRouteDirection {
         return routeName;
     }
 
-    public ArrayList<WazeRoutePart> getRouteParts() {
+    public List<WazeRoutePart> getRouteParts() {
         return routeParts;
     }
 
-    public ArrayList<String> getRouteStreets() {
+    public List<String> getRouteStreets() {
         return routeStreets;
     }
 

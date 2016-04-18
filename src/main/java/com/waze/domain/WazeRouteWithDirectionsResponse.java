@@ -1,6 +1,6 @@
 package com.waze.domain;
 
-import java.util.ArrayList;
+import java.util.List;
 
 public class WazeRouteWithDirectionsResponse {
 
@@ -10,11 +10,11 @@ public class WazeRouteWithDirectionsResponse {
     private String startLongitude;
     private String endLatitude;
     private String endLongitude;
-    private ArrayList<WazeRouteDirection> routesWithDirections;
+    private List<WazeRouteDirection> routesWithDirections;
 
     public WazeRouteWithDirectionsResponse(){}
 
-    public WazeRouteWithDirectionsResponse(String startPoint, String endPoint, String startLatitude, String startLongitude, String endLatitude, String endLongitude, ArrayList<WazeRouteDirection> routesWithDirections) {
+    public WazeRouteWithDirectionsResponse(String startPoint, String endPoint, String startLatitude, String startLongitude, String endLatitude, String endLongitude, List<WazeRouteDirection> routesWithDirections) {
         this.startPoint = startPoint;
         this.endPoint = endPoint;
         this.startLatitude = startLatitude;
@@ -49,7 +49,7 @@ public class WazeRouteWithDirectionsResponse {
         return endLongitude;
     }
 
-    public ArrayList<WazeRouteDirection> getRoutesWithDirections() {
+    public List<WazeRouteDirection> getRoutesWithDirections() {
         return routesWithDirections;
     }
 

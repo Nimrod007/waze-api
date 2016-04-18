@@ -10,6 +10,7 @@ import com.waze.utils.Utils;
 
 import java.net.URLEncoder;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Nimrod_Lahav on 5/21/15.
@@ -34,7 +35,7 @@ public class WazeRouteService {
     public WazeStreetPickerResult getAddressOptionsFromFreeText(String addressText){
         JsonNode results = getAddress(addressText, multipleAddress);
 
-        ArrayList<String> addressList = new ArrayList<>();
+        List<String> addressList = new ArrayList<>();
         for (JsonNode address: results){
             addressList.add(Utils.getStringOrNull("name", address));
         }
@@ -45,11 +46,11 @@ public class WazeRouteService {
             return new WazeStreetPickerResult(addressList.subList(0, 10));
     }
 
-    private ArrayList<JsonNode> sendRouteRequestsWithFallback(String startLat, String startLon, String endLat, String endLon){
+    private List<JsonNode> sendRouteRequestsWithFallback(String startLat, String startLon, String endLat, String endLon){
 
         String[] serverList = {"RoutingManager", "row-RoutingManager", "il-RoutingManager"}; //TODO server list to conf file
 
-        ArrayList<JsonNode> routeResponse = new ArrayList<>();
+        List<JsonNode> routeResponse = new ArrayList<>();
 
         for (String server: serverList){
             String routeURL = createWazeRouteURL(server, startLat, startLon, endLat, endLon);
@@ -87,9 +88,9 @@ public class WazeRouteService {
 
     public WazeRouteWithDirectionsResponse getRouteWithParts(String startLat, String startLon, String endLat, String endLon,String start , String end) {
 
-        ArrayList<WazeRouteDirection> wazeRouteDirections = new ArrayList<>();
+        List<WazeRouteDirection> wazeRouteDirections = new ArrayList<>();
 
-        ArrayList<JsonNode> routeResponse = sendRouteRequestsWithFallback(startLat, startLon, endLat, endLon);
+        List<JsonNode> routeResponse = sendRouteRequestsWithFallback(startLat, startLon, endLat, endLon);
 
         if (routeResponse.isEmpty()){
             return null;
@@ -104,7 +105,7 @@ public class WazeRouteService {
             int routeLengthMeter = 0;
 
             String routeName = Utils.getX2StringOrNull(RESPONSE, "routeName", routeNode);
-            ArrayList<String> streetList = new ArrayList<>();
+            List<String> streetList = new ArrayList<>();
 
             JsonNode streets = routeNode.get(RESPONSE).get("streetNames");
 
@@ -112,7 +113,7 @@ public class WazeRouteService {
                 streetList.add(street.asText());
             }
 
-            ArrayList<WazeRoutePart> wazeRouteParts = new ArrayList<>();
+            List<WazeRoutePart> wazeRouteParts = new ArrayList<>();
             JsonNode routeParts = routeNode.get(RESPONSE).get("results");
             for (JsonNode part : routeParts) {
 
@@ -148,9 +149,9 @@ public class WazeRouteService {
 
     public WazeRouteResponse getRoutes(String startLat, String startLon, String endLat, String endLon,String start , String end) {
 
-        ArrayList<JsonNode> routeResponse = sendRouteRequestsWithFallback(startLat, startLon, endLat, endLon);
+        Iterable<JsonNode> routeResponse = sendRouteRequestsWithFallback(startLat, startLon, endLat, endLon);
 
-        ArrayList<WazeRoute> routes = new ArrayList<>();
+        List<WazeRoute> routes = new ArrayList<>();
         String startLatitude = "";
         String startLongitude = "";
         String endLatitude = "";
@@ -207,8 +208,8 @@ public class WazeRouteService {
 
 
 
-    public ArrayList<JsonNode> sendRouteRequest(String routeUrl){
-        ArrayList<JsonNode> routes = new ArrayList<>();
+    public List<JsonNode> sendRouteRequest(String routeUrl){
+        List<JsonNode> routes = new ArrayList<>();
         try{
             Response response = asyncHttpClient
                     .prepareGet(routeUrl)

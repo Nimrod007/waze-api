@@ -2,14 +2,14 @@ package com.waze.domain;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Nimrod_Lahav on 5/23/15.
  */
 public class WazeRouteResponse {
 
-    private ArrayList<WazeRoute> routes;
+    private List<WazeRoute> routes;
     private String startPoint;
     private String endPoint;
     private String startLatitude;
@@ -20,7 +20,7 @@ public class WazeRouteResponse {
     public WazeRouteResponse() {
     }
 
-    public WazeRouteResponse(ArrayList<WazeRoute> routes, String startPoint, String endPoint, String startLatitude, String startLongitude, String endLatitude, String endLongitude) {
+    public WazeRouteResponse(List<WazeRoute> routes, String startPoint, String endPoint, String startLatitude, String startLongitude, String endLatitude, String endLongitude) {
         this.routes = routes;
         this.startPoint = startPoint;
         this.endPoint = endPoint;
@@ -32,7 +32,7 @@ public class WazeRouteResponse {
 
 
     @JsonProperty
-    public ArrayList<WazeRoute> getRoutes() {
+    public List<WazeRoute> getRoutes() {
         return routes;
     }
 
