@@ -1,4 +1,4 @@
-##waze api - wrapping waze live map [![Build Status](https://travis-ci.org/Nimrod007/waze-api.svg?branch=master)](https://travis-ci.org/Nimrod007/waze-api)
+## waze api - wrapping waze live map [![Build Status](https://travis-ci.org/Nimrod007/waze-api.svg?branch=master)](https://travis-ci.org/Nimrod007/waze-api)
 
 #### 3 steps and your up & running!
 
