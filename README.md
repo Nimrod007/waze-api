@@ -29,8 +29,4 @@ curl -v "http://localhost:8080/waze/routesWithDirections?end=156+5th+Avenue%2C+N
  java -jar waze-server.jar.jar server conf.yml
  ```
 
-====================================
-Blog about it:
-
-http://www.nimrodstech.com
-====================================
+##### http://www.nimrodstech.com
